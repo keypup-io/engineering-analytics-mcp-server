@@ -4,7 +4,11 @@
   "title": "Keypup Engineering Analytics",
   "description": "Generate answers & visualizations from your engineering data to track software development health.",
   "websiteUrl": "https://www.keypup.io",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "repository": {
+    "url": "https://github.com/keypup-io/engineering-analytics-mcp-server",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
