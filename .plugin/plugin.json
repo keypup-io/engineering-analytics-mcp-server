@@ -1,0 +1,28 @@
+{
+  "name": "keypup-engineering-analytics",
+  "displayName": "Keypup Engineering Analytics",
+  "version": "1.0.0",
+  "description": "Generate answers & visualizations from your engineering data to track software development health.",
+  "author": {
+    "name": "Keypup",
+    "url": "https://www.keypup.io"
+  },
+  "homepage": "https://www.keypup.io/mcp-server",
+  "repository": "https://github.com/keypup-io/engineering-analytics-mcp-server",
+  "logo": "assets/keypup-logo.png",
+  "keywords": [
+    "engineering-analytics",
+    "developer-productivity",
+    "github-analytics",
+    "jira-analytics",
+    "data-engine",
+    "data-discovery",
+    "devops",
+    "dora",
+    "analytics",
+    "metrics",
+    "reporting",
+    "mcp"
+  ],
+  "mcpServers": "./.mcp.json"
+}

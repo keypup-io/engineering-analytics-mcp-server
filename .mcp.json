@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "keypup": {
+      "url": "https://hq.keypup.io/mcp",
+      "headers": {
+        "Authorization": "Bearer ${KEYPUP_API_TOKEN}"
+      }
+    }
+  }
+}
