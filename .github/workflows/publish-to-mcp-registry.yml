@@ -1,0 +1,36 @@
+name: Publish to MCP Registry
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      # Install MCP Publisher:
+      - name: Install mcp-publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+      # Login
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login dns --domain keypup.io --private-key ${{ secrets.MCP_REGISTRY_PRIVATE_KEY }}
+      # Publish package
+      - name: Publish server to MCP Registry
+        run: |
+          set +e
+          output=$(./mcp-publisher publish 2>&1)
+          status=$?
+          echo "$output"
+          if [ $status -ne 0 ]; then
+            if echo "$output" | grep -qi "duplicate version"; then
+              echo "::warning::Version already published to MCP Registry, skipping."
+              exit 0
+            fi
+            exit $status
+          fi
