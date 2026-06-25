@@ -2,6 +2,8 @@
 
 > Ask your Keypup engineering data in plain language to track delivery, quality and team workload.
 
+![Keypup MCP server demo](https://raw.githubusercontent.com/keypup-io/engineering-analytics-mcp-server/master/assets/mcp-server-demo.gif)
+
 This extension registers the [Keypup MCP server](https://www.keypup.io/mcp-server)
 with VS Code so you can query your engineering analytics conversationally from
 agent mode in GitHub Copilot Chat. No configuration files to edit, no token to
@@ -33,10 +35,44 @@ The server exposes a focused set of **read-only** tools:
    **Keypup Engineering Analytics** server (or just ask a question — VS Code
    starts it on demand).
 4. Authorize access in the browser window that opens.
-5. Ask away, for example:
-   - "How many pull requests did we merge each month over the last 6 months?"
-   - "Who are our most active reviewers this month?"
-   - "Summarize our engineering activity over the last month."
+5. Ask a question (see examples below).
+
+## Example questions
+
+Once connected, ask your AI assistant questions like these. It picks the right
+dataset, builds the metrics and filters, runs the query, and explains the
+results. You can refine iteratively — "now break that down by repository",
+"restrict it to the backend team", and so on.
+
+**Delivery & throughput**
+
+- "How many pull requests did we merge each month over the last 6 months?"
+- "What's our weekly issue closing rate this quarter?"
+- "How many commits were made per author last month?"
+
+**Cycle time & performance**
+
+- "What's the average time between PR creation and merge over the last 12 weeks?"
+- "Show me the review turnaround time trend for the last 3 months."
+- "Which repositories have the slowest cycle time?"
+
+**Quality & process**
+
+- "How many bugs were raised vs. closed each week this quarter?"
+- "What proportion of our pull requests resolve at least one issue?"
+- "How many PRs were merged without a review?"
+
+**Workload & collaboration**
+
+- "Who are our most active reviewers this month?"
+- "How is work distributed across the team right now?"
+- "How many comments do our pull requests receive on average?"
+
+**Open-ended exploration**
+
+- "Summarize our engineering activity over the last month."
+- "Compare open vs. closed issues over time."
+- "What labels are most common on our issues?"
 
 ## Authentication
 

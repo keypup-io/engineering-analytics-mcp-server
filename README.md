@@ -6,6 +6,8 @@
 
 > Ask your Keypup engineering data in plain language to track delivery, quality and team workload.
 
+![Keypup MCP server demo](assets/mcp-server-demo.gif)
+
 The Keypup MCP (Model Context Protocol) server plugs your Keypup engineering
 analytics directly into any MCP-compatible AI assistant — Claude, Cursor, Kiro,
 ChatGPT Desktop, Gemini CLI, VS Code, and others.
