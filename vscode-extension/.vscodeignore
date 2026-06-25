@@ -1,0 +1,11 @@
+# Source and build config — only the compiled output in dist/ ships.
+src/**
+tsconfig.json
+.vscode/**
+.gitignore
+.vscodeignore
+node_modules/**
+
+# Keep these out of the package
+**/*.map
+**/*.ts
