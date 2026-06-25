@@ -1,5 +1,9 @@
 # Keypup MCP Server
 
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=keypup&config=%7B%22type%22%3A%20%22http%22%2C%20%22url%22%3A%20%22https%3A//hq.keypup.io/mcp%22%7D)
+[![Install in Cursor](https://img.shields.io/badge/Cursor-Install_Server-000000?style=flat-square&logo=cursor&logoColor=white)](cursor://anysphere.cursor-deeplink/mcp/install?name=keypup&config=eyJ1cmwiOiAiaHR0cHM6Ly9ocS5rZXlwdXAuaW8vbWNwIiwgImF1dGgiOiB7IkNMSUVOVF9JRCI6ICJodHRwczovL2N1cnNvci5jb20ifX0=)
+[![Add to Kiro](https://kiro.dev/images/add-to-kiro.svg)](https://kiro.dev/launch/mcp/add?name=keypup&config=%7B%22url%22%3A%20%22https%3A//hq.keypup.io/mcp%22%2C%20%22oauth%22%3A%20%7B%22clientId%22%3A%20%22https%3A//kiro.dev%22%2C%20%22redirectUri%22%3A%20%22127.0.0.1%3A57517%22%7D%2C%20%22disabled%22%3A%20false%2C%20%22autoApprove%22%3A%20%5B%5D%7D)
+
 > Ask your Keypup engineering data in plain language to track delivery, quality and team workload.
 
 The Keypup MCP (Model Context Protocol) server plugs your Keypup engineering
@@ -99,13 +103,41 @@ the backend team", and so on.
 https://hq.keypup.io/mcp
 ```
 
-The server uses the streamable HTTP transport and authenticates via a Keypup API
-token passed in the `Authorization` header.
+The server uses the streamable HTTP transport and supports two authentication
+methods:
 
-### Client configuration
+1. **OAuth 2.1 (recommended)** — the client registers itself dynamically and you
+   authorize access through your browser. No token to copy or store.
+2. **API token** — a Keypup API token passed in the `Authorization` header. Use
+   this when your client does not support OAuth dynamic client registration.
 
-Most MCP clients are configured through a JSON file (VS Code, Kiro, Claude
-Desktop, Cursor, etc. use an `mcp.json`-style configuration). Add a `keypup`
+### Option 1 — OAuth (recommended)
+
+If your client supports OAuth 2.1 with dynamic client registration (e.g. via a
+Client ID Metadata Document), point it at the endpoint with no credentials:
+
+```json
+{
+  "mcpServers": {
+    "keypup": {
+      "type": "http",
+      "url": "https://hq.keypup.io/mcp"
+    }
+  }
+}
+```
+
+On first connection the client opens a browser window to sign in to Keypup and
+authorize access. There is no token to generate, copy, or rotate — this is the
+configuration shipped in this repo's [`.mcp.json`](./.mcp.json).
+
+> If your client does not open an authorization prompt (or fails to register),
+> it likely does not support dynamic client registration yet. Use the API token
+> method below instead.
+
+### Option 2 — API token
+
+For clients without OAuth dynamic client registration support, add a `keypup`
 server entry pointing at the endpoint, with your API token in the `Authorization`
 header:
 
@@ -131,6 +163,9 @@ Once saved, restart or reconnect the MCP server in your client. The Keypup tools
 should appear in the client's tool list, and you can start asking questions.
 
 ## Generating an API token
+
+> Only needed for **Option 2 (API token)**. If you authenticate via OAuth, skip
+> this section.
 
 The MCP server authenticates with the same API tokens used by the GraphQL API.
 
