@@ -2,7 +2,7 @@
   "name": "keypup-mcp",
   "displayName": "Keypup Engineering Analytics",
   "description": "Ask your Keypup engineering data in plain language to track delivery, quality and team workload — directly from VS Code.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "Keypup",
   "license": "MIT",
   "icon": "assets/keypup-logo.png",
